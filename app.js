@@ -1,13 +1,13 @@
 
 window.onload = function() {
     // 1) Render the instance of Formio
-    Formio.setBaseUrl('https://webform-designer-stg.iop.ohio.gov');  
-  //  Formio.setBaseUrl('https://gczorxncusomhpg.form.io'); 
-    // Formio.setProjectUrl('https://gczorxncusomhpg.form.io/comment');
-    Formio.setProjectUrl('https://webform-designer-stg.iop.ohio.gov/stageauthoring-odot');
+    // Formio.setBaseUrl('https://webform-designer-stg.iop.ohio.gov');  
+   //Formio.setBaseUrl('https://gczorxncusomhpg.form.io'); 
+    Formio.setProjectUrl('https://gczorxncusomhpg.form.io/comment');
+    // Formio.setProjectUrl('https://webform-designer-stg.iop.ohio.gov/stageauthoring-odot');
   
 
-    Formio.createForm(document.getElementById('formio'), 'https://webform-designer-stg.iop.ohio.gov/stageauthoring-odot/comment', {
+    Formio.createForm(document.getElementById('formio'), 'https://gczorxncusomhpg.form.io/commentnested', {
         hooks: {
             // 2) Use hooks to insert the data for Project ID and geo-Location before submitting the data
           beforeSubmit: (submission, next) => {
@@ -15,6 +15,7 @@ window.onload = function() {
             submission.data.location = 'Franklin';
             submission.data.projectId = '00001';
             submission.data.status = 'new';
+            submission.data.commentType = 'public';
             // Only call next when we are ready to submit
             this.console.log(submission.data);
             next();
